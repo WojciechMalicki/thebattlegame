@@ -1,0 +1,35 @@
+import heroes
+
+Armand = heroes.hero("Armand", 10, 2)
+Agamonk = heroes.hero("Agamonk", 10, 2)
+Azzo = heroes.hero("Azzo", 10, 2)
+Annagab = heroes.hero("Annagab", 18, 3)
+Enfor = heroes.hero("Enfor", 18, 1)
+Forkt = heroes.hero("Forkt", 8, 1)
+Graom = heroes.hero("Graom", 8, 1)
+Gragh = heroes.hero("Gragh", 8, 1)
+Ghoae = heroes.hero("Ghoae", 8, 1)
+Frads = heroes.hero("Frads", 8, 2)
+Horoae = heroes.hero("Horoae", 8, 1)
+Gersad = heroes.hero("Gersad", 8, 1)
+
+Light = heroes.army("Light")
+Dark = heroes.army("Dark")
+
+Light.add_to_army(Armand)
+Light.add_to_army(Agamonk)
+Light.add_to_army(Azzo)
+Light.add_to_army(Annagab)
+Dark.add_to_army(Enfor)
+Dark.add_to_army(Forkt)
+Dark.add_to_army(Graom)
+Dark.add_to_army(Gragh)
+Dark.add_to_army(Ghoae)
+Dark.add_to_army(Frads)
+Dark.add_to_army(Horoae)
+Dark.add_to_army(Gersad)
+
+print(Light.display_members())
+print(Dark.display_members())
+
+heroes.fight(Light, Dark)
