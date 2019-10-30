@@ -33,7 +33,7 @@ Dark.add_to_army(Gersad)
 Dark.add_to_army(Roar)
 
 
-print(Light.display_members())
-print(Dark.display_members())
+print(Light.display_alive_members())
+print(Dark.display_alive_members())
 
 heroes.fight(Light, Dark)
