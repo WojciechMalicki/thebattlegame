@@ -1,3 +1,8 @@
+#      _  _ ___ ___  ___  ___ ___
+#     | || | __| _ \/ _ \| __/ __|
+#     | __ | _||   / (_) | _|\__ \
+#     |_||_|___|_|_\\___/|___|___/
+#
 from time import sleep
 
 class hero():
@@ -66,20 +71,5 @@ def fight(army1, army2):
                 sleep(t2)
                 a2 += 1
                 print(army2.army[a2].display_stat() +  " start fighting")
-        
-        sleep(t)
-        
-        r_of_b(army2.army[a2].name, army2.name, army1.army[a1].name, army1.name,
-            army2.army[a2].attack, army1.army[a1].health)
-        army1.army[a1].health -= army2.army[a2].attack
-        if not army1.army[a1].is_alive():
-            if a1 == len(army1.army) - 1:
-                print(army1.army[a1].name + " is death")
-                print(army2.name + " is win")
-                d_a(army2.army)
-                return 0
-            else:
-                print(army1.army[a1].name + " is death")
-                sleep(t2)
-                a1 += 1
-                print(army1.army[a1].display_stat() + " start fighting")
+        army1, army2 = army2, army1
+        a1, a2 = a2, a1
