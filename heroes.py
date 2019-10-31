@@ -1,7 +1,10 @@
-#      _  _ ___ ___  ___  ___ ___
-#     | || | __| _ \/ _ \| __/ __|
-#     | __ | _||   / (_) | _|\__ \
-#     |_||_|___|_|_\\___/|___|___/
+#      _
+#     | |
+#     | |__   ___ _ __ ___   ___  ___
+#     | '_ \ / _ \ '__/ _ \ / _ \/ __|
+#     | | | |  __/ | | (_) |  __/\__ \
+#     |_| |_|\___|_|  \___/ \___||___/
+#
 #
 from time import sleep
 
@@ -10,6 +13,7 @@ class hero():
         self.name = name
         self.health = health
         self.attack = attack
+        self.defeated = []
     
     def is_alive(self):
         if self.health > 0:
@@ -19,6 +23,15 @@ class hero():
 
     def display_stat(self):
         return f"{self.name} [{self.health}:{self.attack}]"
+
+    def add_to_list_defeated(self, name):
+        self.defeated.append(name)
+
+    def display_of_defeated(self):
+        defeated = self.name + ": "
+        for d in self.defeated:
+            defeated += d + " "
+        return defeated.strip()
     
 
 class army():
@@ -36,6 +49,10 @@ class army():
                 me += m.name + " "
         me = me.strip()
         return self.name + ": " + me
+
+    def display_of_all_heroes_defeated(self):
+        for h in self.heroes:
+            print(h.display_of_defeated())
     
 
 def fight(army1, army2):
@@ -44,24 +61,21 @@ def fight(army1, army2):
     t = 0.2
     t2 = 0.5
     
-    # def r_of_b(n_a, n_a_a, n_d, n_a_d, p_a, d_h):
-    #    print(n_a + "(" + n_a_a + ") hit " + n_d
-    #        + "(" + n_a_d + ") [" + str(d_h) + "-" + str(p_a) + "=" 
-    #        + str(d_h - p_a) + "]")
-    
     print(army1.heroes[a1].display_stat(), "vs", army2.heroes[a2].display_stat())        
     while 1:
         sleep(t)
         print(army1.heroes[a1].display_stat(), "->", army2.heroes[a2].display_stat())
         army2.heroes[a2].health -= army1.heroes[a1].attack
         if not army2.heroes[a2].is_alive():
+            print(army2.heroes[a2].name + " is death")
+            army1.heroes[a1].add_to_list_defeated(army2.heroes[a2].name)
             if a2 == len(army2.heroes) - 1:
-                print(army2.heroes[a2].name + " is death")
                 print(army1.name + " is win")
                 print(army1.display_alive_heroes())
+                army1.display_of_all_heroes_defeated()
+                army2.display_of_all_heroes_defeated()
                 return 0
             else:
-                print(army2.heroes[a2].name + " is death")
                 sleep(t2)
                 a2 += 1
                 print(army2.heroes[a2].display_stat() +  " start fighting")
