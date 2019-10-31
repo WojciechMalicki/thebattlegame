@@ -1,22 +1,22 @@
 
-import heroes
+from heroes import *
 
-Armand = heroes.hero("Armand", 31, 5)
-Agamonk = heroes.hero("Agamonk", 30, 3)
-Azzo = heroes.hero("Azzo", 30, 2)
-Annagab = heroes.hero("Annagab", 18, 8)
-Enfor = heroes.hero("Enfor", 10, 7)
-Forkt = heroes.hero("Forkt", 8, 5)
-Graom = heroes.hero("Graom", 8, 5)
-Gragh = heroes.hero("Gragh", 8, 5)
-Ghoae = heroes.hero("Ghoae", 8, 5)
-Frads = heroes.hero("Frads", 8, 5)
-Horoae = heroes.hero("Horoae", 8, 5)
-Gersad = heroes.hero("Gersad", 8, 5)
-Roar = heroes.hero("Roar", 8, 5)
+Armand = hero("Armand", 31, 8)
+Agamonk = hero("Agamonk", 30, 8)
+Azzo = hero("Azzo", 30, 2)
+Annagab = hero("Annagab", 18, 8)
+Enfor = hero("Enfor", 10, 7)
+Forkt = hero("Forkt", 8, 9)
+Graom = hero("Graom", 8, 5)
+Gragh = hero("Gragh", 8, 5)
+Ghoae = hero("Ghoae", 8, 5)
+Frads = hero("Frads", 8, 5)
+Horoae = hero("Horoae", 8, 5)
+Gersad = hero("Gersad", 8, 5)
+Roar = hero("Roar", 8, 20)
 
-Light = heroes.army("Light")
-Dark = heroes.army("Dark")
+Light = army("Light")
+Dark = army("Dark")
 
 Light.add_to_army(Armand)
 Light.add_to_army(Agamonk)
@@ -33,7 +33,7 @@ Dark.add_to_army(Gersad)
 Dark.add_to_army(Roar)
 
 
-print(Light.display_alive_members())
-print(Dark.display_alive_members())
+print(Light.display_alive_heroes())
+print(Dark.display_alive_heroes())
 
-heroes.fight(Light, Dark)
+fight(Light, Dark)
