@@ -6,14 +6,19 @@
 #     |_| |_|\___|_|  \___/ \___||___/
 #
 #
+
+#TODO properties in class hero with information about name of army
 from time import sleep
+from random import randint as rnd
 
 class hero():
-    def __init__(self, name, health, attack):
+    def __init__(self, name, health, mn_attack, mx_attack):
         self.name = name
         self.health = health
-        self.attack = attack
+        self.min_attack = mn_attack
+        self.max_attack = mx_attack
         self.defeated = []
+        self.sum_of_power = 0
     
     def is_alive(self):
         if self.health > 0:
@@ -21,17 +26,30 @@ class hero():
         else:
             return False
 
-    def display_stat(self):
-        return f"{self.name} [{self.health}:{self.attack}]"
+    def set_hit_point(self):
+        return rnd(self.min_attack, self.max_attack) 
+
+    def display_stat_full(self):
+        return f"{self.name} [{self.health}:{self.min_attack}-{self.max_attack}]"
+
+    def display_stat(self, a):
+        if a:
+            self.hit_point = self.set_hit_point()
+            self.sum_of_power += self.hit_point
+            return f"{self.name} [{self.hit_point}]"
+        else:
+            return f"{self.name} [{self.health}]"
 
     def add_to_list_defeated(self, name):
         self.defeated.append(name)
 
     def display_of_defeated(self):
-        defeated = self.name + ": "
+        defeated = self.name + " defeated "
         for d in self.defeated:
             defeated += d + " "
-        return defeated.strip()
+        return defeated.strip() + f" ({self.sum_of_power})"
+
+
     
 
 class army():
@@ -58,14 +76,15 @@ class army():
 def fight(army1, army2):
     a1 = 0
     a2 = 0
-    t = 0.2
-    t2 = 0.5
+    t = 0.5
+    t2 = 1
     
-    print(army1.heroes[a1].display_stat(), "vs", army2.heroes[a2].display_stat())        
+
+    print(army1.heroes[a1].display_stat_full(), "vs", army2.heroes[a2].display_stat_full())        
     while 1:
         sleep(t)
-        print(army1.heroes[a1].display_stat(), "->", army2.heroes[a2].display_stat())
-        army2.heroes[a2].health -= army1.heroes[a1].attack
+        print(army1.heroes[a1].display_stat(True), "->", army2.heroes[a2].display_stat(False))
+        army2.heroes[a2].health -= army1.heroes[a1].hit_point
         if not army2.heroes[a2].is_alive():
             print(army2.heroes[a2].name + " is death")
             army1.heroes[a1].add_to_list_defeated(army2.heroes[a2].name)
@@ -78,6 +97,6 @@ def fight(army1, army2):
             else:
                 sleep(t2)
                 a2 += 1
-                print(army2.heroes[a2].display_stat() +  " start fighting")
+                print(army2.heroes[a2].display_stat_full() +  " start fighting")
         army1, army2 = army2, army1
         a1, a2 = a2, a1
