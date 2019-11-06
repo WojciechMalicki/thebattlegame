@@ -50,5 +50,6 @@ Dark.add_to_army(Drobar)
 
 print(Light.display_alive_heroes())
 print(Dark.display_alive_heroes())
+print(Drobar.name_of_army)
 
 fight(Light, Dark)

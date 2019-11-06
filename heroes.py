@@ -7,7 +7,6 @@
 #
 #
 
-#TODO properties in class hero with information about name of army
 from time import sleep
 from random import randint as rnd
 
@@ -19,6 +18,7 @@ class hero():
         self.max_attack = mx_attack
         self.defeated = []
         self.sum_of_power = 0
+        self.name_of_army = None
     
     def is_alive(self):
         if self.health > 0:
@@ -49,16 +49,15 @@ class hero():
             defeated += d + " "
         return defeated.strip() + f" ({self.sum_of_power})"
 
-
-    
-
 class army():
     def __init__(self, name):
         self.name = name
         self.heroes = []
         
-    def add_to_army(self, name_hero):
-        self.heroes.append(name_hero)
+    def add_to_army(self, hero):
+        self.heroes.append(hero)
+        hero.name_of_army = self.name
+
         
     def display_alive_heroes(self):
         me = ""
@@ -79,7 +78,6 @@ def fight(army1, army2):
     t = 0.5
     t2 = 1
     
-
     print(army1.heroes[a1].display_stat_full(), "vs", army2.heroes[a2].display_stat_full())        
     while 1:
         sleep(t)
