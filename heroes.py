@@ -98,3 +98,9 @@ def fight(army1, army2):
                 print(army2.heroes[a2].display_stat_full() +  " start fighting")
         army1, army2 = army2, army1
         a1, a2 = a2, a1
+
+def fight_game(army1, army2):
+    def arena():
+        print("\t" + army1.name + "\t\t\t" + army2.name)
+
+    arena()
