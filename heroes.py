@@ -9,6 +9,7 @@
 
 from time import sleep
 from random import randint as rnd
+from itertools import zip_longest as zip_long
 
 class hero():
     def __init__(self, name, health, mn_attack, mx_attack):
@@ -102,5 +103,16 @@ def fight(army1, army2):
 def fight_game(army1, army2):
     def arena():
         print("\t" + army1.name + "\t\t\t" + army2.name)
+        for n1, n2 in zip_long(army1.heroes, army2.heroes):
+            if type(n1) == hero:
+                name1 = n1.name
+            else:
+                name1 = ""
+            if type(n2) == hero:
+                name2 = n2.name
+            else:
+                name2 = ""
+            print("\t" + name1 + "\t\t\t" + name2)
+
 
     arena()

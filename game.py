@@ -11,6 +11,6 @@ Dark = army("Dark")
 Light.add_to_army(Azzo)
 Light.add_to_army(Annagab)
 Dark.add_to_army(Enfor)
-Dark.add_to_army(Forkt)
+#Dark.add_to_army(Forkt)
 
 fight_game(Light, Dark)
