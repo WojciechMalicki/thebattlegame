@@ -102,17 +102,19 @@ def fight(army1, army2):
 
 def fight_game(army1, army2):
     def arena():
-        print("\t" + army1.name + "\t\t\t" + army2.name)
+        print("\t" + army1.name + "\t\t\t\t" + army2.name)
         for n1, n2 in zip_long(army1.heroes, army2.heroes):
             if type(n1) == hero:
-                name1 = n1.name
+                stat1 = n1.display_stat_full()
             else:
-                name1 = ""
+                stat1 = ""
             if type(n2) == hero:
-                name2 = n2.name
+                stat2 = n2.display_stat_full()
             else:
-                name2 = ""
-            print("\t" + name1 + "\t\t\t" + name2)
+                stat2 = ""
+            print("\t" + stat1 + "\t\t\t" + stat2)
 
+    def choose():
+        pass
 
     arena()
