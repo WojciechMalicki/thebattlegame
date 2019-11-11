@@ -8,6 +8,7 @@
 # 	
 
 from heroes import *
+from fight import *
 
 Armand = hero("Armand", 65, 25, 28)
 Agamonk = hero("Agamonk", 165, 10, 26)
