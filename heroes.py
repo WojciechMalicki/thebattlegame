@@ -20,7 +20,7 @@ class hero():
         self.sum_of_power = 0
         self.name_of_army = None
         self.heal = heal
-    
+       
     def is_alive(self):
         if self.cur_health > 0:
             return True
@@ -62,10 +62,14 @@ class army():
         self.heroes = []
         
     def add_to_army(self, hero):
-        self.heroes.append(hero)
-        hero.name_of_army = self.name
+        if hero.name_of_army == None:
+            self.heroes.append(hero)
+            hero.name_of_army = self.name
+        elif hero.name_of_army == self.name:
+            print(hero.name, "already belongs to this army")
+        else:
+            print(hero.name, "belongs to", hero.name_of_army)
 
-        
     def display_alive_heroes(self):
         me = ""
         for m in self.heroes:
