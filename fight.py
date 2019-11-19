@@ -39,24 +39,23 @@ def fight(army1, army2):
         a1, a2 = a2, a1
 
 def fight_game(army1, army2):
-    def arena():
-        a = 1
-        e = len(army1.heroes) + 1
-        print("\t" + army1.name + "\t\t\t\t" + army2.name)
-        for n1, n2 in zip_long(army1.heroes, army2.heroes):
-            if type(n1) == hero:
-                stat1 = str(a) + ". " + n1.display_stat_full()
-                a += 1
-            else:
-                stat1 = ""
-            if type(n2) == hero:
-                stat2 = str(e) + ". " + n2.display_stat_full()
-                e += 1
-            else:
-                stat2 = ""
-            print("\t" + stat1 + "\t\t\t\t" + stat2)
+	your_turn = 0
+	enemy_turn = 0
+	count_turns = 1
 
-    def choose():
-        pass
+	def arena():
+		print("Turn:", count_turns)
+		print("-------------")
+		print("Your army:", army1.name)
+		for h in army1.heroes:
+			print("\t" + h.name)
+		print()
+		a = 1
+		for h in army2.heroes:
+			print("\t" + str(a) + ". " + h.name)
+			a += 1
 
-    arena()
+	def choose():
+		pass
+
+	arena()
