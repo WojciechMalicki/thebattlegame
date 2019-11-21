@@ -10,6 +10,7 @@
 from time import sleep
 from itertools import zip_longest as zip_long
 from heroes import *
+from random import choice as chc
 
 def fight(army1, army2):
     a1 = 0
@@ -39,9 +40,10 @@ def fight(army1, army2):
         a1, a2 = a2, a1
 
 def fight_game(army1, army2):
-	your_turn = 0
-	enemy_turn = 0
+	your_hero = 0
+	enemy_hero = 0
 	count_turns = 1
+	is_your_turn = chc([True, False])
 
 	def arena():
 		print("Turn:", count_turns)
@@ -54,6 +56,12 @@ def fight_game(army1, army2):
 		for h in army2.heroes:
 			print("\t" + str(a) + ". " + h.name)
 			a += 1
+
+	def you():
+		pass
+	
+	def enemy():
+		pass
 
 	def choose():
 		pass
