@@ -53,17 +53,22 @@ def fight_game(army1, army2):
 			print("\t" + h.name)
 		print()
 		a = 1
+		print("Enemy's army:", army2.name)
 		for h in army2.heroes:
 			print("\t" + str(a) + ". " + h.name)
 			a += 1
 
 	def you():
-		pass
+		print("Your turn")
 	
 	def enemy():
-		pass
+		print("Enemy's turn")
 
 	def choose():
-		pass
+		if is_your_turn:
+			you()
+		else:
+			enemy()
 
 	arena()
+	choose()
