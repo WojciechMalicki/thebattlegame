@@ -42,6 +42,7 @@ def fight(army1, army2):
 def fight_game(army1, army2):
 	your_hero = 0
 	enemy_hero = 0
+	your_army_size = 0
 	count_turns = 1
 	is_your_turn = chc([True, False])
 
@@ -72,3 +73,9 @@ def fight_game(army1, army2):
 
 	arena()
 	choose()
+
+# atak silny lub szybki
+# taktyka dla przeciwnika
+# sztuczna inteligencja
+# itemy i umiejętności (dwóch różnych przeciwników atakowac w jednej turze,
+# healowanie kosztem własnego zdrowia, ogłuszanie)
