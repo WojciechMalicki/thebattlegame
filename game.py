@@ -11,6 +11,7 @@
 from heroes import *	
 from fight import *
 
+# Create a hero: Name, HP, minimum hitpoint, maximum hit point
 Armand = hero("Armand", 65, 25, 28)
 Agamonk = hero("Agamonk", 165, 10, 26)
 Azzo = hero("Azzo", 85, 40, 42, 10)
@@ -29,9 +30,11 @@ Rarck = hero("Rarck", 18, 1, 25)
 Sparek = hero("Sparek", 17, 1, 6)
 Drobar = hero("Drobar", 19, 1, 11)
 
+# Create army: name
 Light = army("Light")
 Dark = army("Dark")
 
+# Add heroes to armies
 Light.add_to_army(Armand)
 Light.add_to_army(Agamonk)
 Light.add_to_army(Azzo)
@@ -52,5 +55,5 @@ Dark.add_to_army(Rarck)
 Dark.add_to_army(Sparek)
 Dark.add_to_army(Drobar)
 
-
+# fight!
 fight_game(Light, Dark)
